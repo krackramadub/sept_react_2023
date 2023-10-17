@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./App.css";
-import { MyContext } from "./hooks/context";
-import { useMyHook } from "./hooks/myCustomHook";
+
 import { Route, Routes, useParams } from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
 import { Layout } from "./components/Layouts/Layout";
 import { Page404 } from "./pages/Page404";
 import { AdminPage } from "./pages/AdminPage";
 import { InputLabel } from "./components/InputLabel/InputLabel";
+import { PostsPage } from "./pages/PostsPage";
 
 /*
     Краткое описание
@@ -39,15 +39,13 @@ import { InputLabel } from "./components/InputLabel/InputLabel";
 
 const App = ({ label }) => {
   // доступ к контексту
-  let context = useContext(MyContext);
 
   // использование данных из контекста
-  const textHello = context.label;
-  const [value, setValue] = useState(context.value || 0);
+  const textHello = "";
+  const [value, setValue] = useState(0);
 
   let divRef = useRef(); // установка связи с html элементов
 
-  console.log("context", context);
   useEffect(() => {
     console.log("divRef", divRef);
 
@@ -63,6 +61,7 @@ const App = ({ label }) => {
         {/* Главная страница и ее подстраницы */}
         <Route path="/*" element={<Layout />}>
           <Route index element={<MainPage />} />
+          <Route path="posts" element={<PostsPage />} />
           <Route path="label" element={<InputLabel />} />
           <Route path="*" element={<Page404 />} />
           <Route path="*" element={<Page404 />} />
