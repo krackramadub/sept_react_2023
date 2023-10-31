@@ -17,33 +17,7 @@ router.get('/u', (req, res) => {
 router.post('/u/registers', async (req, res) => {
   console.log('r', req.body)
 
-  const { email, name } = req.body
 
-
-  try {
-    let findedUser = await prisma.user.findMany({
-      where: {
-        email: email
-      }
-    })
-
-    if (findedUser && Array.isArray(findedUser) && findedUser.length > 0) {
-      res.json({ ok: false, errMsg: 'Такой пользователь уже существует' })
-    }
-
-    let createdUser = await prisma.user.create({
-      data: {
-        email: email,
-        name: name
-      }
-    })
-    res.json({ ok: true, user: createdUser })
-    prisma.$disconnect()
-  } catch (error) {
-    res.json({ ok: false, errMsg: error })
-  }
-
-  return res.json({ ok: true, result: ['ok'] })
 })
 
 router.post('/post/create', async (req, res) => {
