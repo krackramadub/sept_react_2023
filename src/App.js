@@ -8,6 +8,8 @@ import { Page404 } from "./pages/Page404";
 import { AdminPage } from "./pages/AdminPage";
 import { InputLabel } from "./components/InputLabel/InputLabel";
 import { PostsPage } from "./pages/PostsPage";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
 
 /*
     Краткое описание
@@ -73,6 +75,9 @@ const App = ({ label }) => {
           <Route path="label/:id/" element={<InputLabel />} />
           <Route path="*" element={<Page404 />} />
         </Route>
+
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </>
   );
